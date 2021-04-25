@@ -9,7 +9,7 @@ async function fetchPosts() {
 const postTemplate = (post) => `
   <li>
     <a href="${post.url}">
-      <h2>${ post.title }</h2>
+      <h2 class="font-semibold">${ post.title }</h2>
       <p class="text-sm text-gray-800">${ post.description }</p>
     </a>
 
