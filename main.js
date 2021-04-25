@@ -7,7 +7,7 @@ async function fetchPosts() {
 }
 
 const postTemplate = (post) => `
-  <li>
+  <li class="transition duration-100 ease-in-out hover:ring-4 hover:ring-blue-500 hover:ring-offset-4">
     <a href="${post.url}">
       <h2 class="font-semibold">${ post.title }</h2>
       <p class="text-sm text-gray-800">${ post.description }</p>
