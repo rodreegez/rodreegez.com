@@ -19,7 +19,7 @@ const postTemplate = (post) => `
 const writingContainer = document.querySelector('#recent-posts');
 
 fetchPosts().then(posts => {
-  for (var post of posts) {
+  for (var post of posts.slice(0,4)) {
     console.log(post);
     writingContainer.insertAdjacentHTML('beforeend', postTemplate(post));
   }
