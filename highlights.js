@@ -9,7 +9,21 @@ for(let highlight of highlights) {
 }
 
 const randomHighlight = () => {
-  return allHighlights[Math.floor(Math.random()*allHighlights.length)]
+  let newHighlight = allHighlights[Math.floor(Math.random()*allHighlights.length)]
+  newHighlight = newHighlight.trim()
+  if(/[a-z]$/.test(newHighlight[0])) {
+    newHighlight = `…${newHighlight}`
+  }
+  if(newHighlight[(newHighlight.length - 1)] === ',') {
+    newHighlight = newHighlight.replace(/,$/,'…')
+  }
+  if(newHighlight[(newHighlight.length - 1)] === ';') {
+    newHighlight = newHighlight.replace(/;$/,'…')
+  }
+  if(/[a-z]$/.test(newHighlight[(newHighlight.length - 1)])) {
+    newHighlight = `${newHighlight}…`
+  }
+  return newHighlight
 }
 
 const refreshHighlight = () => {
