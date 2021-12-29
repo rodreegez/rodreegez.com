@@ -1,6 +1,6 @@
 import highlights from './highlights.json'
 
-let allHighlights = []
+const allHighlights = []
 
 for(let highlight of highlights) {
   for(let quote of highlight.highlights) {
@@ -8,6 +8,15 @@ for(let highlight of highlights) {
   }
 }
 
-let randomHighlight = allHighlights[Math.floor(Math.random()*allHighlights.length)]
+const randomHighlight = () => {
+  return allHighlights[Math.floor(Math.random()*allHighlights.length)]
+}
 
-document.querySelector('#random-highlight').innerText = randomHighlight
+const refreshHighlight = () => {
+  document.querySelector('#random-highlight').innerText = randomHighlight()
+}
+
+window.refreshHighlight = refreshHighlight
+
+refreshHighlight()
+

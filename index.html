@@ -7,14 +7,16 @@
     <title>Adam Rogers is a software developer</title>
   </head>
   <body class="min-h-screen antialiased bg-white">
-    <div class="p-4 mx-auto max-w-7xl sm:p-6 lg:p-8 space-y-6">
+    <div class="p-4 mx-auto max-w-7xl sm:p-6 lg:p-8 space-y-4">
       <div>
         <h1 class="text-2xl font-black text-black sm:text-4xl">Adam Rogers</h1>
-        <h2 class="text-xl font-semibold">is a software developer</h2>
+        <h2 class="text-xl font-semibold">builds things on the internet</h2>
       </div>
       <div class="sm:grid sm:grid-cols-3 sm:gap-4 space-y-6 sm:space-y-0">
         <div class="text-xl font-semibold sm:text-2xl space-y-4">
-          <p id="random-highlight" class="italic"></p>
+          <button onclick="refreshHighlight()" class="text-xl font-semibold text-left">
+            <p id="random-highlight"></p>
+          </button>
           <p>
             <a href="mailto:adam@rodreegez.com" class="underline">Email</a>
             me or find me on
