@@ -1,65 +1,1038 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adam Rogers is a software developer</title>
-  </head>
-  <body class="min-h-screen antialiased bg-white">
-    <div class="p-4 mx-auto max-w-7xl sm:p-6 lg:p-8 space-y-4">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam Rogers | Co-Founder & CPTO, Martello</title>
+  <meta name="description" content="Adam Rogers is a product-centric software developer and Co-Founder & CPTO of Martello. I build the machine that builds the machine." />
+  <meta name="theme-color" content="#f3f1ec" />
+  <meta property="og:title" content="Adam Rogers | Co-Founder & CPTO, Martello" />
+  <meta property="og:description" content="Product-centric software developer building Martello. I build the machine that builds the machine." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #f3f1ec;
+      --paper: #f7f5f0;
+      --ink: #0d0d0d;
+      --muted: #5a5a56;
+      --line: #111111;
+      --accent: #19c37d;
+      --max: 1360px;
+      --pad: clamp(16px, 2vw, 28px);
+      --gap: 14px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px),
+        var(--bg);
+      background-size: 28px 28px, 28px 28px, auto;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--line);
+      outline-offset: 4px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      width: min(calc(100% - 22px), var(--max));
+      margin: 12px auto;
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,0.54);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "AR-01 / PRODUCT-TECH-DELIVERY / STATIC INSTANCE";
+      position: absolute;
+      top: 18px;
+      right: -74px;
+      transform: rotate(90deg);
+      transform-origin: top right;
+      font: 11px/1.1 "Courier New", monospace;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .wrap {
+      padding: var(--pad);
+    }
+
+    .utility {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      border-bottom: 2px solid var(--line);
+      font: 12px/1.2 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .utility > div {
+      padding: 10px 12px;
+      border-right: 2px solid var(--line);
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .utility > div:last-child {
+      border-right: 0;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.8fr;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .hero-left {
+      padding: 24px 22px 26px;
+      border-right: 2px solid var(--line);
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .index-label,
+    .micro-label,
+    .kicker,
+    .caption,
+    .list-num {
+      font-family: "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .index-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .title-block {
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(72px, 13vw, 170px);
+      line-height: 0.86;
+      letter-spacing: -0.08em;
+      text-transform: uppercase;
+      max-width: 7ch;
+    }
+
+    .title-cut {
+      display: inline-block;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 0 0.08em;
+      margin-top: 10px;
+    }
+
+    .hero-note {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 18px;
+      align-items: start;
+      max-width: 760px;
+      margin-top: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-note p,
+    .body-copy,
+    .metric-copy,
+    .item p,
+    .contact-copy,
+    .footer-copy {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .micro-label {
+      font-size: 11px;
+      color: var(--muted);
+      padding-top: 4px;
+    }
+
+    .diagram {
+      position: absolute;
+      right: 20px;
+      top: 92px;
+      width: min(36vw, 390px);
+      height: min(36vw, 390px);
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      opacity: 0.96;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0 34%, rgba(0,0,0,0.95) 34.2% 34.8%, transparent 35% 100%),
+        repeating-radial-gradient(circle at center, transparent 0 24px, rgba(0,0,0,0.08) 24px 25px),
+        linear-gradient(90deg, transparent 49.6%, rgba(0,0,0,0.75) 49.8%, rgba(0,0,0,0.75) 50.2%, transparent 50.4%),
+        linear-gradient(transparent 49.6%, rgba(0,0,0,0.75) 49.8%, rgba(0,0,0,0.75) 50.2%, transparent 50.4%);
+    }
+
+    .diagram::before,
+    .diagram::after {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+    }
+
+    .diagram::after {
+      inset: 29%;
+    }
+
+    .signal {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--line);
+      padding: 8px 12px;
+      background: var(--paper);
+      font: 12px/1 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      z-index: 3;
+    }
+
+    .signal .mark {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--line);
+    }
+
+    .hero-right {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      min-height: 500px;
+    }
+
+    .stack,
+    .quote,
+    .data-grid,
+    .matrix,
+    .footer-grid,
+    .contact,
+    .link-list {
+      position: relative;
+    }
+
+    .stack {
+      display: grid;
+      gap: 0;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .stack-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 2px solid var(--line);
+      min-height: 74px;
+      align-items: end;
+    }
+
+    .stack-item:last-child {
+      border-bottom: 0;
+    }
+
+    .stack-item strong {
+      display: block;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+    }
+
+    .stack-item span {
+      font: 11px/1.2 "Courier New", monospace;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    .quote {
+      border-bottom: 2px solid var(--line);
+      padding: 22px 18px 20px;
+    }
+
+    .quote p {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      max-width: 12ch;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 18px;
+      font: 11px/1.2 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-content: start;
+      height: 100%;
+    }
+
+    .cell {
+      min-height: 116px;
+      padding: 14px 16px;
+      border-right: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .data-grid .cell:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .cell .kicker {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .cell strong {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .cell span {
+      font-size: 14px;
+      line-height: 1.2;
+      max-width: 22ch;
+    }
+
+    .section {
+      border-bottom: 2px solid var(--line);
+    }
+
+    .section:last-of-type {
+      border-bottom: 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 18px;
+      padding: 14px var(--pad);
+      border-bottom: 2px solid var(--line);
+      align-items: start;
+    }
+
+    .section-id {
+      font: 12px/1.2 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 74px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+    }
+
+    .section-meta {
+      font: 12px/1.2 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-align: right;
+      padding-top: 8px;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .item {
+      min-height: 240px;
+      padding: 18px;
+      border-right: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .item::after {
+      content: "";
+      position: absolute;
+      right: -38px;
+      bottom: -38px;
+      width: 120px;
+      height: 120px;
+      border: 2px solid rgba(0,0,0,0.12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .item h3 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 46px);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      max-width: 10ch;
+    }
+
+    .list-num {
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .item p {
+      max-width: 24ch;
+    }
+
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      min-height: 360px;
+    }
+
+    .body-left {
+      border-right: 2px solid var(--line);
+      padding: 22px var(--pad) 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .body-right {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+    }
+
+    .metric {
+      padding: 16px 18px;
+      border-bottom: 2px solid var(--line);
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 16px;
+      align-items: center;
+      min-height: 88px;
+    }
+
+    .metric:last-child {
+      border-bottom: 0;
+    }
+
+    .metric strong {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .body-copy {
+      max-width: 34ch;
+      position: relative;
+      z-index: 2;
+    }
+
+    .body-subcopy {
+      margin: 18px 0 0;
+      max-width: 32ch;
+      position: relative;
+      z-index: 2;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .cross {
+      position: absolute;
+      inset: 22px;
+      pointer-events: none;
+      opacity: 0.12;
+      background:
+        linear-gradient(45deg, transparent 49.5%, var(--line) 49.8%, var(--line) 50.2%, transparent 50.5%),
+        linear-gradient(-32deg, transparent 49.5%, var(--line) 49.8%, var(--line) 50.2%, transparent 50.5%);
+    }
+
+    .orbital {
+      position: absolute;
+      right: -40px;
+      bottom: -80px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.18);
+      opacity: 0.7;
+    }
+
+    .orbital::before,
+    .orbital::after {
+      content: "";
+      position: absolute;
+      inset: 16%;
+      border: 2px solid rgba(0,0,0,0.18);
+      border-radius: 50%;
+      transform: rotate(28deg);
+    }
+
+    .orbital::after {
+      inset: 31%;
+      transform: rotate(-18deg);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      border-top: 2px solid var(--line);
+    }
+
+    .footer-left {
+      padding: 18px var(--pad) 22px;
+      border-right: 2px solid var(--line);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .contact,
+    .footer-box {
+      padding: 16px 18px;
+      border-bottom: 2px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .footer-box:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-copy,
+    .footer-copy {
+      max-width: 28ch;
+    }
+
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 2px solid var(--line);
+      width: fit-content;
+      font: 11px/1.1 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: var(--paper);
+    }
+
+    .footer-box strong {
+      font-size: clamp(28px, 4vw, 50px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .tiny {
+      font: 11px/1.25 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .link-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .link-list a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 2px solid var(--line);
+      background: var(--paper);
+      font: 11px/1.1 "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .contact-copy a {
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .body-grid,
+      .footer-grid,
+      .matrix,
+      .utility,
+      .section-head,
+      .hero-note,
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left,
+      .body-left,
+      .footer-left,
+      .utility > div,
+      .section-head,
+      .item,
+      .cell,
+      .stack-item,
+      .contact,
+      .footer-box {
+        border-right: 0 !important;
+      }
+
+      .hero-left,
+      .footer-left {
+        min-height: auto;
+      }
+
+      .hero-right,
+      .body-right,
+      .footer-right {
+        min-height: auto;
+      }
+
+      .matrix {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .item:nth-child(2n) {
+        border-right: 0 !important;
+      }
+
+      .item:nth-child(3n) {
+        border-right: 2px solid var(--line);
+      }
+
+      .utility {
+        grid-template-columns: 1fr;
+      }
+
+      .section-meta {
+        text-align: left;
+        padding-top: 0;
+      }
+
+      .diagram {
+        right: -24px;
+        top: 130px;
+        width: 270px;
+        height: 270px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(calc(100% - 12px), var(--max));
+        margin: 6px auto;
+      }
+
+      .wrap,
+      .hero-left,
+      .body-left,
+      .footer-left,
+      .section-head,
+      .quote,
+      .cell,
+      .item,
+      .stack-item,
+      .contact,
+      .footer-box,
+      .metric {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .matrix {
+        grid-template-columns: 1fr;
+      }
+
+      .item:nth-child(3n),
+      .item:nth-child(2n) {
+        border-right: 0 !important;
+      }
+
+      .hero-note {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .signal {
+        position: static;
+        margin-top: 22px;
+      }
+
+      .diagram {
+        width: 220px;
+        height: 220px;
+        top: 180px;
+        right: -30px;
+      }
+
+      .body-copy,
+      .body-subcopy,
+      .hero-note p,
+      .item p,
+      .contact-copy,
+      .footer-copy {
+        font-size: 16px;
+      }
+
+      .metric {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="utility" aria-label="Utility header">
       <div>
-        <h1 class="text-2xl font-black text-black sm:text-4xl">Adam Rogers</h1>
-        <h2 class="text-xl font-semibold">builds things on the internet</h2>
+        <span>ADAM ROGERS / PERSONAL SITE</span>
+        <span class="dot" aria-hidden="true"></span>
       </div>
-      <div class="sm:grid sm:grid-cols-3 sm:gap-4 space-y-6 sm:space-y-0">
-        <div class="text-xl font-semibold sm:text-2xl space-y-4">
-          <button onclick="refreshHighlight()" class="text-xl font-semibold text-left">
-            <p id="random-highlight"></p>
-          </button>
-          <p>
-            <a href="mailto:adam@rodreegez.com" class="underline">Email</a>
-            me or find me on
-            <a href="https://twitter.com/rodreegez">
-              <svg role="img" class="inline w-4 h-4 text-blue-500 fill-current sm:w-6 sm:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Twitter logo</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-              <span class="underline">Twitter</span></a>.
+      <div>
+        <span>ROLE</span>
+        <span>CO-FOUNDER & CPTO</span>
+      </div>
+      <div>
+        <span>MODE</span>
+        <span>ACTIVE / STATIC</span>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-left">
+        <div>
+          <div class="index-label">[ 01 ] OPERATOR PROFILE</div>
+          <div class="title-block">
+            <h1>
+              ADAM<br>
+              <span class="title-cut">ROGERS</span>
+            </h1>
+          </div>
+
+          <div class="hero-note">
+            <div class="micro-label">FUNCTION</div>
+            <p>
+              Co-Founder & CPTO, Martello. Product-centric software developer.
+              I build the machine that builds the machine: product direction, software systems, delivery discipline,
+              and the operating layer that keeps things moving.
+            </p>
+          </div>
+        </div>
+
+        <div class="signal">
+          <span class="mark" aria-hidden="true"></span>
+          <span>PRODUCT + SOFTWARE + EXECUTION</span>
+        </div>
+
+        <div class="diagram" aria-hidden="true"></div>
+      </div>
+
+      <aside class="hero-right" aria-label="Summary blocks">
+        <div class="stack">
+          <div class="stack-item">
+            <strong>MARTELLO</strong>
+            <span>BUILDING THE THING</span>
+          </div>
+          <div class="stack-item">
+            <strong>PRODUCT</strong>
+            <span>SHAPING / PRIORITIES / QUALITY</span>
+          </div>
+          <div class="stack-item">
+            <strong>SOFTWARE</strong>
+            <span>SYSTEMS / QUALITY / DELIVERY</span>
+          </div>
+        </div>
+
+        <div class="quote">
+          <p>BUILD THE MACHINE THAT BUILDS THE MACHINE.</p>
+          <small>PRINCIPLE / 001</small>
+        </div>
+
+        <div class="data-grid">
+          <div class="cell">
+            <div class="kicker">CURRENT</div>
+            <strong>MARTELLO</strong>
+            <span>Framing messy property problems into software that can actually ship.</span>
+          </div>
+          <div class="cell">
+            <div class="kicker">WORKING STYLE</div>
+            <strong>PRODUCT-LED</strong>
+            <span>Start with the shape of the thing, then make it buildable.</span>
+          </div>
+          <div class="cell">
+            <div class="kicker">BIAS</div>
+            <strong>BUILD</strong>
+            <span>Working software, sharp decisions, and enough structure to keep moving.</span>
+          </div>
+          <div class="cell">
+            <div class="kicker">INTEREST</div>
+            <strong>SYSTEMS</strong>
+            <span>Interfaces, workflows, automation, and the leverage hidden behind them.</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head">
+        <div class="section-id">[ 02 ] ABOUT</div>
+        <h2 class="section-title">WHAT I ACTUALLY DO</h2>
+        <div class="section-meta">PRODUCT / SOFTWARE / OPERATING SYSTEM</div>
+      </div>
+
+      <div class="matrix">
+        <article class="item">
+          <div class="item-header">
+            <h3>SET DIRECTION</h3>
+            <div class="list-num">A1</div>
+          </div>
+          <p>Clarify the problem early. Set the boundaries. Turn vague ambition into work a team can actually build.</p>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <h3>WRITE SOFTWARE</h3>
+            <div class="list-num">A2</div>
+          </div>
+          <p>Write code, shape systems, and keep the technical standard high enough that speed does not rot the product.</p>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <h3>RUN THE SYSTEM</h3>
+            <div class="list-num">A3</div>
+          </div>
+          <p>Rhythm, trade-offs, decision-making, accountability. A lot of the useful work happens in the layer around the work itself.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="section-head">
+        <div class="section-id">[ 03 ] METHOD</div>
+        <h2 class="section-title">HOW I OPERATE</h2>
+        <div class="section-meta">FRAME / SHAPE / SHIP</div>
+      </div>
+
+      <div class="body-grid">
+        <div class="body-left">
+          <div class="micro-label">READOUT</div>
+          <p class="body-copy">
+            I like to get clear on the real problem before implementation starts.
+            Write down the problem, think hard, write down the solution, then test it against reality.
+          </p>
+          <p class="body-subcopy">
+            I trust working software more than elaborate specs, but I would rather think properly up front than move fast in the wrong direction.
+          </p>
+          <div class="cross" aria-hidden="true"></div>
+          <div class="orbital" aria-hidden="true"></div>
+        </div>
+
+        <div class="body-right">
+          <div class="metric">
+            <div class="tiny">01</div>
+            <div>
+              <strong>CLARIFY</strong>
+              <p class="metric-copy">Define the actual problem first. Otherwise the team just gets faster at solving the wrong thing.</p>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="tiny">02</div>
+            <div>
+              <strong>PLAN</strong>
+              <p class="metric-copy">Think hard before building. Bound the work early so it stays coherent once implementation starts.</p>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="tiny">03</div>
+            <div>
+              <strong>SHIP</strong>
+              <p class="metric-copy">Use prototypes, code and shipped product to learn quickly. Reality is more useful than documentation.</p>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="tiny">04</div>
+            <div>
+              <strong>VERIFY</strong>
+              <p class="metric-copy">Have a hypothesis. Check it against behaviour, data, and outcomes instead of defending it by opinion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="focus">
+      <div class="section-head">
+        <div class="section-id">[ 04 ] PROJECTS</div>
+        <h2 class="section-title">SELECTED WORK</h2>
+        <div class="section-meta">COMPANIES / PRODUCTS / INTERNET STUFF</div>
+      </div>
+
+      <div class="matrix">
+        <article class="item">
+          <div class="item-header">
+            <h3>MARTELLO</h3>
+            <div class="list-num">B1</div>
+          </div>
+          <p>Co-Founder &amp; CPTO. Building software for UK property workflows, risk, and better decisions.</p>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <h3>DESKBEERS</h3>
+            <div class="list-num">B2</div>
+          </div>
+          <p>Founded and ran a craft beer delivery startup. Product, software, logistics, customers, vans, the lot.</p>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <h3>MINT DIGITAL</h3>
+            <div class="list-num">B3</div>
+          </div>
+          <p>Built internet products including Stickygram, Boomf and Foldable.me, plus work for BBC and Channel 4.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer-grid" id="contact">
+      <div class="footer-left">
+        <div>
+          <div class="section-id">[ 05 ] LINKS</div>
+          <p class="footer-copy">
+            Everyone should have a page on the internet. This one is mine.
+            Not the full story. Just enough signal that, if you were curious, now you know where to look next.
           </p>
         </div>
-        <div class="space-y-4">
-          <div class="font-bold border-b-4 border-black">Projects</div>
-          <ul class="space-y-4">
-            <li class="transition duration-100 ease-in-out hover:ring-4 hover:ring-yellow-500 hover:ring-opacity-50 hover:ring-offset-4">
-              <a href="https://www.mynestbox.co.uk">
-                <h2 class="font-semibold">MyNestBox</h2>
-                <p class="text-sm text-gray-800">Applying data-science to property. CTO + product dev. AWS &amp; Terraform, Ruby on Rails, Stimulus JS.</p>
-              </a>
-            </li>
-            <li class="transition duration-100 ease-in-out hover:ring-4 hover:ring-purple-500 hover:ring-offset-4">
-              <a href="https://ponydeluxe.com">
-                <h2 class="font-semibold">Pony Deluxe</h2>
-                <p class="text-sm text-gray-800">A logistics SaaS for small businesses managing their own local deliveries. Indie side project, sole developer. Ruby on Rails, TailwindCSS, Google OR-Tools, Stripe.</p>
-              </a>
-            </li>
-            <li class="transition duration-100 ease-in-out hover:ring-4 hover:ring-green-500 hover:ring-opacity-50 hover:ring-offset-4">
-              <a href="https://personalrecord.club">
-                <h2 class="font-semibold">Personal Record Club</h2>
-                <p class="text-sm text-gray-800">Pick one album at a time and folllow your friends to create a unique playlist in Spotify made up of your collective current picks. Ruby on Rails, React, Spotify API.</p>
-              </a>
-            </li>
-            <li>
-              <p class="font-semibold">DeskBeers ☠️</p>
-              <p class="text-sm text-gray-800">B2B e-commerce craft beer to your office. 2015 to 2020. CEO, developer, teaboy, bicycle messenger. Good times.</p>
-            </li>
-          </ul>
-        </div>
-        <div class="space-y-4">
-          <div class="font-bold border-b-4 border-black">Writing</div>
-          <ul id="recent-posts" class="mt-4 space-y-4">
-          </ul>
-          <a href="https://dev.to/rodreegez" class="block px-3 py-2 mx-auto text-sm text-center text-white text-gray-800 bg-black rounded">Read more</a>
+        <div class="stamp">
+          <span class="dot" aria-hidden="true"></span>
+          <span>STATUS / BUILDING MARTELLO</span>
         </div>
       </div>
-    </div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+      <div class="footer-right">
+        <div class="contact">
+          <div class="tiny">AROUND THE INTERNET</div>
+          <div class="link-list">
+            <a href="https://www.martello.app">Martello</a>
+            <a href="https://github.com/rodreegez">GitHub</a>
+            <a href="https://x.com/rodreegez">X</a>
+            <a href="https://dev.to/rodreegez">Writing</a>
+          </div>
+          <p class="contact-copy">Martello is the main thing. GitHub and <a href="https://dev.to/rodreegez">writing</a> are the receipts.</p>
+        </div>
+
+        <div class="footer-box">
+          <div class="tiny">SITE NOTE</div>
+          <strong>SHARP, STRANGE, DELIBERATE.</strong>
+          <p class="footer-copy">Less biography, more signal.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
