@@ -1,0 +1,7 @@
+.git
+.kamal
+.codex
+.DS_Store
+node_modules
+dist
+dist-ssr

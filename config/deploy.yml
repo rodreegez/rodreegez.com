@@ -1,0 +1,38 @@
+# Name of your application. Used to uniquely configure containers.
+service: rodreegez-com
+
+# Name of the container image.
+image: rodreegez/rodreegez-com
+
+# Deploy to these servers.
+servers:
+  web:
+    - oh-my-banoffee-pie.tail8a6133.ts.net
+
+proxy:
+  ssl: true
+  hosts:
+    - rodreegez.com
+    - www.rodreegez.com
+  app_port: 80
+  healthcheck:
+    path: /health
+    interval: 3
+    timeout: 3
+
+registry:
+  server: ghcr.io
+  username: rodreegez
+  password:
+    - GHCR_TOKEN
+
+builder:
+  arch: amd64
+
+env:
+  clear:
+    APP_VERSION: <%= `git rev-parse --short HEAD`.strip %>
+    REPO_URL: https://github.com/rodreegez/rodreegez.com
+
+ssh:
+  user: adam
