@@ -2,6 +2,14 @@
   <header class="note-header">
     <p class="eyebrow">[ NOTE ] <%= format_date.call(post.date) %></p>
     <h1><%= post.title %></h1>
+    <% if post.ai && !post.ai.empty? %>
+      <p class="note-provenance">
+        <span><%= format_ai_label.call(post.ai) %></span>
+        <% if post.model && !post.model.empty? %>
+          <span><%= post.model %></span>
+        <% end %>
+      </p>
+    <% end %>
     <% if post.description && !post.description.empty? %>
       <p class="note-description"><%= post.description %></p>
     <% end %>

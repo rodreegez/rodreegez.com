@@ -14,12 +14,16 @@ Each post uses YAML frontmatter:
 ---
 title: My Post Title
 date: 2026-04-08
+ai: assisted
+model: GPT-5.4
 slug: my-post-title
 description: One-line description for notes index and meta tags.
 ---
 
 Markdown body here.
 ```
+
+If `ai` is omitted, nothing is shown on the post — the default assumption is that the piece is yours unless stated otherwise.
 
 ## Build
 

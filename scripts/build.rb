@@ -17,6 +17,8 @@ Post = Struct.new(
   :title,
   :slug,
   :date,
+  :ai,
+  :model,
   :description,
   :body_markdown,
   :body_html,
@@ -59,12 +61,16 @@ module Helpers
     slug = frontmatter["slug"] || File.basename(path, ".md")
     date = frontmatter.fetch("date")
     date = Date.parse(date.to_s) unless date.is_a?(Date)
+    ai = frontmatter["ai"]
+    model = frontmatter["model"]
     description = frontmatter["description"] || first_paragraph(body)
 
     Post.new(
       title: title,
       slug: slug,
       date: date,
+      ai: ai,
+      model: model,
       description: description,
       body_markdown: body,
       body_html: Kramdown::Document.new(body, input: "GFM").to_html,
@@ -83,6 +89,17 @@ module Helpers
 
   def format_date(date)
     date.strftime("%d %B %Y")
+  end
+
+  def format_ai_label(ai)
+    case ai.to_s.downcase
+    when "generated"
+      "AI-generated"
+    when "assisted"
+      "AI-assisted"
+    else
+      ai.to_s
+    end
   end
 
   def xml_escape(text)
@@ -105,7 +122,12 @@ posts = Dir.glob(File.join(CONTENT_DIR, "*.md")).sort.map { |path| parse_post(pa
 posts.sort_by! { |post| [-post.date.jd, post.slug] }
 
 posts.each do |post|
-  article = render_template("note.html.erb", post: post, format_date: method(:format_date))
+  article = render_template(
+    "note.html.erb",
+    post: post,
+    format_date: method(:format_date),
+    format_ai_label: method(:format_ai_label)
+  )
   page = wrap_layout(
     title: "#{post.title} | Notes | Adam Rogers",
     description: post.description,
@@ -119,7 +141,12 @@ posts.each do |post|
   File.write(File.join(destination, "index.html"), page)
 end
 
-notes_index = render_template("notes_index.html.erb", posts: posts, format_date: method(:format_date))
+notes_index = render_template(
+  "notes_index.html.erb",
+  posts: posts,
+  format_date: method(:format_date),
+  format_ai_label: method(:format_ai_label)
+)
 notes_index_page = wrap_layout(
   title: "Notes | Adam Rogers",
   description: "Notes on software, systems, delivery, and side projects.",

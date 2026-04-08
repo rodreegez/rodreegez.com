@@ -154,6 +154,27 @@ a:focus-visible {
   line-height: 1.45;
 }
 
+.note-provenance,
+.notes-list__provenance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+
+.note-provenance span,
+.notes-list__provenance span {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font: 12px/1.2 "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
 .eyebrow {
   margin: 0 0 18px;
   color: var(--muted);
@@ -209,6 +230,14 @@ a:focus-visible {
   max-width: 42rem;
   font-size: 18px;
   line-height: 1.5;
+}
+
+.notes-list__body .notes-list__provenance {
+  margin-top: 10px;
+}
+
+.notes-list__body .notes-list__provenance span {
+  font-size: 11px;
 }
 
 .note-article {

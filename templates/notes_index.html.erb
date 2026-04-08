@@ -22,6 +22,14 @@
         </div>
         <div class="notes-list__body">
           <h2><a href="/notes/<%= post.slug %>/"><%= post.title %></a></h2>
+          <% if post.ai && !post.ai.empty? %>
+            <p class="notes-list__provenance">
+              <span><%= format_ai_label.call(post.ai) %></span>
+              <% if post.model && !post.model.empty? %>
+                <span><%= post.model %></span>
+              <% end %>
+            </p>
+          <% end %>
           <p><%= post.description %></p>
         </div>
       </li>
