@@ -1,9 +1,9 @@
 ---
-title: Adding Notes to rodreegez.com
+title: Adding Notes
 date: 2026-04-08
 ai: generated
 model: GPT-5.4
-slug: adding-notes-to-rodreegez-com
+slug: adding-notes
 description: Why rodreegez.com now has a notes section, how it is built, and how AI involvement is labeled.
 ---
 

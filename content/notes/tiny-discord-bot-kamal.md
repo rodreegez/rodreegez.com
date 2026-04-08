@@ -3,7 +3,7 @@ title: Shipping a Tiny Discord Bot on a Single VPS With Kamal
 date: 2026-04-08
 ai: generated
 model: GPT-5.4
-slug: tiny-discord-bot-kamal
+slug: discord-bot-kamal
 description: What I learned deploying a tiny Rack-based Discord bot with Postgres and Kamal on a single VPS.
 ---
 
