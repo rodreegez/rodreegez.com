@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= page_title %></title>
+  <meta name="description" content="<%= meta_description %>" />
+  <meta name="theme-color" content="#f3f1ec" />
+  <meta property="og:title" content="<%= page_title %>" />
+  <meta property="og:description" content="<%= meta_description %>" />
+  <meta property="og:type" content="article" />
+  <% if canonical_url %>
+  <link rel="canonical" href="<%= canonical_url %>" />
+  <% end %>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script defer src="https://umami.rodreegez.com/script.js" data-website-id="4551ce50-b6d5-42c0-b245-1680832f9e47"></script>
+</head>
+<body<%= body_class ? " class=\"#{body_class}\"" : "" %>>
+  <div class="notes-shell">
+    <header class="site-header">
+      <div class="site-header__row site-header__row--utility">
+        <span>ADAM ROGERS / NOTES</span>
+        <span class="site-header__dot" aria-hidden="true"></span>
+      </div>
+      <div class="site-header__row site-header__row--nav">
+        <a href="/">Home</a>
+        <a href="/notes/">Notes</a>
+        <a href="https://github.com/rodreegez">GitHub</a>
+        <a href="https://www.martello.app">Martello</a>
+      </div>
+    </header>
+
+    <main class="page-frame">
+      <%= content %>
+    </main>
+  </div>
+</body>
+</html>

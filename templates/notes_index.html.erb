@@ -1,0 +1,30 @@
+<section class="notes-hero">
+  <p class="eyebrow">[ 01 ] NOTES</p>
+  <h1>Small notes on software, systems, delivery, and side projects.</h1>
+  <p class="lede">
+    A low-fi markdown blog. Written in plain files, rendered to static HTML at build time,
+    and shipped alongside the rest of rodreegez.com.
+  </p>
+</section>
+
+<section class="notes-listing">
+  <div class="section-bar">
+    <span>[ 02 ] INDEX</span>
+    <span><%= posts.length %> post<%= "s" unless posts.length == 1 %></span>
+  </div>
+
+  <ol class="notes-list">
+    <% posts.each_with_index do |post, index| %>
+      <li class="notes-list__item">
+        <div class="notes-list__meta">
+          <span><%= format_date.call(post.date) %></span>
+          <span><%= format('%02d', index + 1) %></span>
+        </div>
+        <div class="notes-list__body">
+          <h2><a href="/notes/<%= post.slug %>/"><%= post.title %></a></h2>
+          <p><%= post.description %></p>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+</section>

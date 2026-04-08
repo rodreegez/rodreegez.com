@@ -1,0 +1,49 @@
+# rodreegez.com
+
+Static homepage + markdown notes, deployed with Kamal.
+
+## Notes workflow
+
+Write posts in:
+
+- `content/notes/*.md`
+
+Each post uses YAML frontmatter:
+
+```md
+---
+title: My Post Title
+date: 2026-04-08
+slug: my-post-title
+description: One-line description for notes index and meta tags.
+---
+
+Markdown body here.
+```
+
+## Build
+
+```bash
+bundle install
+bundle exec ruby scripts/build.rb
+```
+
+Build output is written to `dist/`.
+
+## Preview locally
+
+```bash
+bundle exec ruby scripts/preview.rb
+```
+
+This builds the site and serves `dist/` at `http://127.0.0.1:4000` by default.
+
+Optional:
+
+```bash
+PORT=4567 HOST=0.0.0.0 bundle exec ruby scripts/preview.rb
+```
+
+## Deploy
+
+Deployment continues to use the existing Kamal flow. The Docker image now builds the static site first, then copies the generated `dist/` output into nginx.

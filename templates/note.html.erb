@@ -1,0 +1,17 @@
+<article class="note-article">
+  <header class="note-header">
+    <p class="eyebrow">[ NOTE ] <%= format_date.call(post.date) %></p>
+    <h1><%= post.title %></h1>
+    <% if post.description && !post.description.empty? %>
+      <p class="note-description"><%= post.description %></p>
+    <% end %>
+  </header>
+
+  <div class="note-body markdown-body">
+    <%= post.body_html %>
+  </div>
+
+  <footer class="note-footer">
+    <a href="/notes/">← Back to notes</a>
+  </footer>
+</article>
