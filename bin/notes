@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "date"
+require "fileutils"
+
+ROOT = File.expand_path("..", __dir__)
+NOTES_DIR = File.join(ROOT, "content", "notes")
+ACRONYMS = %w[AI API CLI CMS CSS DNS ERB GFM GHCR HTML HTTP HTTPS JS JSON RSS SEO SQL SSH SVG TUI UI URL VPS XML].freeze
+SMALL_WORDS = %w[a an and as at but by for in of on or the to via with].freeze
+
+def usage
+  <<~TEXT
+    Usage: bin/notes TITLE...
+
+    Example:
+      bin/notes the future of developers in an ai world
+  TEXT
+end
+
+def parameterize(text)
+  text
+    .unicode_normalize(:nfkd)
+    .encode("ASCII", invalid: :replace, undef: :replace, replace: "")
+    .downcase
+    .gsub(/[^a-z0-9]+/, "-")
+    .gsub(/\A-+|-+\z/, "")
+end
+
+def titleize(text)
+  words = text.split(/\s+/)
+
+  words.map.with_index do |word, index|
+    downcased = word.downcase
+    if ACRONYMS.include?(downcased.upcase)
+      downcased.upcase
+    elsif index.positive? && index < words.length - 1 && SMALL_WORDS.include?(downcased)
+      downcased
+    else
+      downcased.split("-").map do |segment|
+        if ACRONYMS.include?(segment.upcase)
+          segment.upcase
+        else
+          segment.sub(/\A\p{Alnum}/) { |char| char.upcase }
+        end
+      end.join("-")
+    end
+  end.join(" ")
+end
+
+def yaml_string(text)
+  text.inspect
+end
+
+if ARGV.empty? || ARGV == ["-h"] || ARGV == ["--help"] || ARGV == ["help"]
+  warn usage
+  exit(ARGV.empty? ? 1 : 0)
+end
+
+raw_title = ARGV.join(" ").strip.gsub(/\s+/, " ")
+slug = parameterize(raw_title)
+if slug.empty?
+  warn "Could not generate a slug from: #{raw_title.inspect}"
+  exit 1
+end
+
+title = titleize(raw_title)
+date = Date.today.iso8601
+path = File.join(NOTES_DIR, "#{slug}.md")
+
+if File.exist?(path)
+  warn "Note already exists: #{path}"
+  exit 1
+end
+
+FileUtils.mkdir_p(NOTES_DIR)
+
+content = <<~MARKDOWN
+  ---
+  title: #{yaml_string(title)}
+  date: #{date}
+  slug: #{slug}
+  description:
+
+  # Optional when AI materially shaped the piece:
+  # ai: assisted
+  # model: GPT-5.4
+  ---
+
+MARKDOWN
+
+File.write(path, content)
+puts "Created #{path}"
