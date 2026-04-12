@@ -23,7 +23,17 @@ description: One-line description for notes index and meta tags.
 Markdown body here.
 ```
 
+Scaffold a new note with:
+
+```bash
+bin/notes the future of developers in an ai world
+```
+
+That creates `content/notes/the-future-of-developers-in-an-ai-world.md` with the expected frontmatter and optional AI metadata commented out.
+
 If `ai` is omitted, nothing is shown on the post — the default assumption is that the piece is yours unless stated otherwise.
+
+If `date` is omitted or left blank, the build skips that note entirely. This is useful for drafts you want to keep in the repo without publishing.
 
 ## Build
 
