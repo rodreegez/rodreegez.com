@@ -59,7 +59,11 @@ module Helpers
 
     title = frontmatter.fetch("title")
     slug = frontmatter["slug"] || File.basename(path, ".md")
-    date = frontmatter.fetch("date")
+    date = frontmatter["date"]
+    if date.nil? || date.to_s.strip.empty?
+      warn "Skipping undated note: #{path}"
+      return nil
+    end
     date = Date.parse(date.to_s) unless date.is_a?(Date)
     ai = frontmatter["ai"]
     model = frontmatter["model"]
@@ -118,7 +122,7 @@ FileUtils.cp(File.join(ROOT, "index.html"), File.join(DIST_DIR, "index.html"))
 FileUtils.cp(File.join(ROOT, "favicon.svg"), File.join(DIST_DIR, "favicon.svg"))
 FileUtils.cp_r(Dir[File.join(STATIC_DIR, "*")], File.join(DIST_DIR, "assets")) if Dir.exist?(STATIC_DIR)
 
-posts = Dir.glob(File.join(CONTENT_DIR, "*.md")).sort.map { |path| parse_post(path) }
+posts = Dir.glob(File.join(CONTENT_DIR, "*.md")).sort.map { |path| parse_post(path) }.compact
 posts.sort_by! { |post| [-post.date.jd, post.slug] }
 
 posts.each do |post|
