@@ -87,7 +87,7 @@ a:focus-visible {
 .eyebrow,
 .section-bar,
 .note-meta,
-.markdown-body blockquote p:first-child,
+.markdown-body blockquote p,
 .markdown-body code,
 .markdown-body pre,
 .note-footer {
