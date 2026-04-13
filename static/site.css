@@ -6,6 +6,8 @@
   --muted: #5a5a56;
   --line: #111111;
   --accent: #19c37d;
+  --link-hover: #2f5a4a;
+  --link-underline: rgba(13, 13, 13, 0.35);
   --max: 980px;
   --pad: clamp(16px, 2vw, 28px);
   --radius: 18px;
@@ -52,6 +54,30 @@ a:focus-visible {
 a:focus-visible {
   outline: 2px solid var(--line);
   outline-offset: 4px;
+}
+
+.notes-index-page .page-frame a,
+.note-page .page-frame a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--link-underline);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.16em;
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+
+.notes-index-page .page-frame a:hover,
+.notes-index-page .page-frame a:focus-visible,
+.note-page .page-frame a:hover,
+.note-page .page-frame a:focus-visible {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+}
+
+.notes-index-page .notes-list__body h2 a,
+.notes-index-page .notes-list__body h2 a:hover,
+.notes-index-page .notes-list__body h2 a:focus-visible {
+  text-decoration: none;
 }
 
 .notes-shell {
