@@ -39,7 +39,7 @@ If `date` is omitted or left blank, the build skips that note entirely. This is 
 
 ```bash
 bundle install
-bundle exec ruby scripts/build.rb
+bin/build
 ```
 
 Build output is written to `dist/`.
@@ -47,7 +47,7 @@ Build output is written to `dist/`.
 ## Preview locally
 
 ```bash
-bundle exec ruby scripts/preview.rb
+bin/preview
 ```
 
 This builds the site and serves `dist/` at `http://127.0.0.1:4000` by default.
@@ -55,7 +55,7 @@ This builds the site and serves `dist/` at `http://127.0.0.1:4000` by default.
 Optional:
 
 ```bash
-PORT=4567 HOST=0.0.0.0 bundle exec ruby scripts/preview.rb
+PORT=4567 HOST=0.0.0.0 bin/preview
 ```
 
 ## Deploy

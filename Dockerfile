@@ -8,7 +8,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY . .
-RUN bundle exec ruby scripts/build.rb
+RUN bin/build
 
 FROM nginx:1.29-alpine
 
