@@ -113,7 +113,7 @@ a:focus-visible {
 .eyebrow,
 .section-bar,
 .note-meta,
-.markdown-body blockquote p,
+.markdown-body blockquote,
 .markdown-body code,
 .markdown-body pre,
 .note-footer {
@@ -333,7 +333,7 @@ a:focus-visible {
   background: var(--paper-solid);
 }
 
-.markdown-body blockquote p {
+.markdown-body blockquote :is(p, li) {
   font-size: 16px;
   line-height: 1.6;
 }
