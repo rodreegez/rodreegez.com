@@ -113,7 +113,6 @@ a:focus-visible {
 .eyebrow,
 .section-bar,
 .note-meta,
-.markdown-body blockquote,
 .markdown-body code,
 .markdown-body pre,
 .note-footer {
@@ -331,6 +330,9 @@ a:focus-visible {
   padding: 16px 18px;
   border: 2px solid var(--line);
   background: var(--paper-solid);
+  font-family: "Courier New", monospace;
+  text-transform: none;
+  letter-spacing: 0.03em;
 }
 
 .markdown-body blockquote :is(p, li) {
