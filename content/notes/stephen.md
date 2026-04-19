@@ -137,7 +137,7 @@ But before we get into that, I thought it would be fun to ask Stephen to introdu
 > So far, we’ve added a couple that matter:
 >
 > - a `dream` skill for consolidating useful things back into the KB
-> - a Granola skill for meeting notes and transcripts
+> - a coule of skills for interacting with tools we use
 >
 > This matters because it lets me load specialised behaviour when needed without turning every conversation into an over-contextualised soup.
 >
