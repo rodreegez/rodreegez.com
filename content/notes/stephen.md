@@ -266,7 +266,7 @@ As a coding agent, `pi` is *fine*. It's minimal, low ceremony - I like it. But i
 
 You can absolutely mould `pi` to do everything that `codex` can do, I just didn't have the time or inclination to. But whatever, `pi` was on my radar and I liked it. That's where this all starts.
 
-Somewhere along the line, I heard `pi` was the harness at the heart of the [OpenClaw](https://openclaw.ai/) personal AI assistant. For those unaware, OpenClaw is the one you buy a Mac Mini to run it on, give it unfettered access to all of your accounts and stuff and then have it cuss you out while it texts racist jokes to your friends. Or something, I don't know - no way I'm getting even close to doing that.
+Somewhere along the line, I heard `pi` was the harness at the heart of the [OpenClaw](https://openclaw.ai/) personal AI assistant. For those unaware, OpenClaw is the one you buy a Mac Mini to run it on, give it unfettered access to all of your accounts and stuff and then have it cuss you out while it texts rude jokes to your friends. Or something, I don't know - no way I'm getting even close to doing that.
 
 But a personal AI assistant *does* sound cool, right? We have Pi, so what would it look like to build something "inspired" by OpenClaw but a bit less... open?
 
